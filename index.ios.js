@@ -8,10 +8,18 @@ import {
   ScrollView,
   Text,
   Image,
-  ListView
+  ListView,
+  Navigator
 } from 'react-native';
 import JobsScreen from 'GCCVendorMobile/components/jobsScreen';
+import {
+  StackNavigator,
+} from 'react-navigation';
 
+const App = StackNavigator({
+  Main: {screen: JobsScreen},
+  Job: {screen: JobsScreen}
+});
 
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
 const MyStatusBar = ({backgroundColor, ...props}) => (
@@ -25,12 +33,19 @@ const MyStatusBar = ({backgroundColor, ...props}) => (
 export default class GCCVendorMobile extends Component {
   render() {
     return (
-      <JobsScreen/>
+      <App
+        headerStyle={styles.headerStyle}
+        headerTintColor="'#FFFFFF'"
+      />
     );
   }
 }
 
-
+const styles = StyleSheet.create({
+  headerStyle:{
+    backgroundColor: '#AABBFF'
+  }
+})
 
 
 

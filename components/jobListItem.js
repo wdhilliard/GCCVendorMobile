@@ -7,19 +7,23 @@ import {
   Platform,
   ScrollView,
   Text,
-  Image
+  Image,
+  TouchableHighlight
 } from 'react-native';
 
 export default class JobListItem extends Component {
   constructor(props){
     super(props);
+    this.bind
   }
-
+  goToJob(event){
+    this.props.navigation.navigate('Job');
+  }
   render() {
     return (
-        <View style={styles.job}>
-            
-            <View style={styles.jobStar}>
+        <TouchableHighlight onPress={(event) => this.goToJob(event)}>
+          <View style={styles.job}>
+            <View style={styles.jobStar} >
               <Image
                 resizeMode="contain"
                 source={require('GCCVendorMobile/images/star-outline.png')} 
@@ -57,8 +61,8 @@ export default class JobListItem extends Component {
                 style={{width:9,height:14}}
               />
             </View>
-
-        </View>
+          </View>
+        </TouchableHighlight>
     );
   }
 }
