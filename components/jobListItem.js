@@ -1,146 +1,150 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
   View,
-  StatusBar,
-  Platform,
-  ScrollView,
   Text,
   Image,
   TouchableHighlight
 } from 'react-native';
 
 export default class JobListItem extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.bind
+    this.bind;
   }
-  goToJob(event){
+  goToJob(event) {
     this.props.navigation.navigate('Job');
   }
   render() {
     return (
-        <TouchableHighlight onPress={(event) => this.goToJob(event)}>
-          <View style={styles.job}>
-            <View style={styles.jobStar} >
-              <Image
-                resizeMode="contain"
-                source={require('GCCVendorMobile/images/star-outline.png')} 
-                style={{width:24,height:24}}
-              />
-            </View>
-
-
-            <View style={styles.jobDetails}>
-              <View style={styles.jobInfo}>
-                <View style={styles.jobType}>
-                  <Text style={styles.jobTypeText}>M</Text>
-                </View>
-                <View style={styles.jobNumber}>
-                  <Text style={styles.jobNumberText}>{this.props.job.jobNumber}</Text>
-                </View>
-                <View style={styles.jobDate}>
-                  <Text style={styles.jobDateText}>Mar 4, 8 am - 12 pm</Text>
-                </View>
-              </View>
-
-              <View style={styles.jobAddress}>
-                <Text style={styles.jobCustomerName}>{this.props.job.customer.firstName} {this.props.job.customer.lastName}</Text>
-                <Text style={styles.jobAddressLine}>{this.props.job.serviceAddress.line1}</Text>
-                <Text style={styles.jobAddressLine}>{this.props.job.serviceAddress.line2}</Text>
-                <Text style={styles.jobAddressLine}>{this.props.job.serviceAddress.city+', '+this.props.job.serviceAddress.city+' '+this.props.job.serviceAddress.state}</Text>
-              </View>
-
-            </View>
-
-            <View style={styles.jobArrowButton}>
-              <Image
-                resizeMode="contain"
-                source={require('GCCVendorMobile/images/right-arrow.png')} 
-                style={{width:9,height:14}}
-              />
-            </View>
+      <TouchableHighlight onPress={event => this.goToJob(event)}>
+        <View style={styles.job}>
+          <View style={styles.jobStar}>
+            <Image
+              resizeMode="contain"
+              source={require('GCCVendorMobile/images/star-outline.png')}
+              style={{ width: 24, height: 24 }}
+            />
           </View>
-        </TouchableHighlight>
+
+          <View style={styles.jobDetails}>
+            <View style={styles.jobInfo}>
+              <View style={styles.jobType}>
+                <Text style={styles.jobTypeText}>M</Text>
+              </View>
+              <View style={styles.jobNumber}>
+                <Text style={styles.jobNumberText}>
+                  {this.props.job.jobNumber}
+                </Text>
+              </View>
+              <View style={styles.jobDate}>
+                <Text style={styles.jobDateText}>Mar 4, 8 am - 12 pm</Text>
+              </View>
+            </View>
+
+            <View style={styles.jobAddress}>
+              <Text style={styles.jobCustomerName}>
+                {this.props.job.customer.firstName}
+                {' '}
+                {this.props.job.customer.lastName}
+              </Text>
+              <Text style={styles.jobAddressLine}>
+                {this.props.job.serviceAddress.line1}
+              </Text>
+              <Text style={styles.jobAddressLine}>
+                {this.props.job.serviceAddress.line2}
+              </Text>
+              <Text style={styles.jobAddressLine}>
+                {this.props.job.serviceAddress.city +
+                  ', ' +
+                  this.props.job.serviceAddress.city +
+                  ' ' +
+                  this.props.job.serviceAddress.state}
+              </Text>
+            </View>
+
+          </View>
+
+          <View style={styles.jobArrowButton}>
+            <Image
+              resizeMode="contain"
+              source={require('GCCVendorMobile/images/right-arrow.png')}
+              style={{ width: 9, height: 14 }}
+            />
+          </View>
+        </View>
+      </TouchableHighlight>
     );
   }
 }
 
-
-
 const styles = StyleSheet.create({
-   job:{
+  job: {
     backgroundColor: '#FFFFFF',
-    borderBottomWidth:1,
+    borderBottomWidth: 1,
     borderColor: '#EEEEEE',
-    flexDirection:'row',
-    flexGrow:1
-
+    flexDirection: 'row',
+    flexGrow: 1
   },
-  jobStar:{
-    justifyContent:'center',
-    width:45,
+  jobStar: {
+    justifyContent: 'center',
+    width: 45,
     padding: 11
-
   },
-  jobDetails:{
-    marginTop:11,
-    flexGrow:1
+  jobDetails: {
+    marginTop: 11,
+    flexGrow: 1
   },
-  jobInfo:{
-    flexDirection:'row'
+  jobInfo: {
+    flexDirection: 'row'
   },
-  jobType:{
-    borderTopLeftRadius:2,
-    borderBottomLeftRadius:2,
-    borderWidth:4,
-    borderTopWidth:0,
-    borderBottomWidth:0,
-    borderColor:'#4F08CA',
-    backgroundColor:'#4F08CA'
+  jobType: {
+    borderTopLeftRadius: 2,
+    borderBottomLeftRadius: 2,
+    borderWidth: 4,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderColor: '#4F08CA',
+    backgroundColor: '#4F08CA'
   },
-  jobTypeText:{
-    color:'#FFFFFF',
+  jobTypeText: {
+    color: '#FFFFFF',
     fontSize: 14,
-    fontFamily:'OpenSans-Semibold'
+    fontFamily: 'OpenSans-Semibold'
   },
-  jobNumber:{
-    backgroundColor:'#EEEEEE',
-
+  jobNumber: {
+    backgroundColor: '#EEEEEE'
   },
-  jobNumberText:{
-    paddingHorizontal:4,
-    color:'#444444',
+  jobNumberText: {
+    paddingHorizontal: 4,
+    color: '#444444',
     fontSize: 14,
-    fontFamily:'OpenSans-Semibold'
+    fontFamily: 'OpenSans-Semibold'
   },
-  jobDate:{
-
-  },
-  jobDateText:{
-    paddingHorizontal:5,
-    color:'#444444',
+  jobDate: {},
+  jobDateText: {
+    paddingHorizontal: 5,
+    color: '#444444',
     fontSize: 14,
-    fontFamily:'OpenSans-Semibold'
+    fontFamily: 'OpenSans-Semibold'
   },
 
-  jobAddress:{
-    marginVertical:10,
-    flexGrow:20
+  jobAddress: {
+    marginVertical: 10,
+    flexGrow: 20
   },
-  jobCustomerName:{
-    color:'#444444',
-    fontSize:15,
-    fontFamily:'OpenSans-Semibold'
+  jobCustomerName: {
+    color: '#444444',
+    fontSize: 15,
+    fontFamily: 'OpenSans-Semibold'
   },
-  jobAddressLine:{
-    color:'#444444',
-    fontSize:14,
-    fontFamily:'OpenSans-Light'
+  jobAddressLine: {
+    color: '#444444',
+    fontSize: 14,
+    fontFamily: 'OpenSans-Light'
   },
-  jobArrowButton:{
-    justifyContent:'center',
-    width:20
+  jobArrowButton: {
+    justifyContent: 'center',
+    width: 20
   }
-})
+});

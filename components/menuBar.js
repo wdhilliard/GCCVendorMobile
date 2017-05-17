@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
@@ -16,11 +16,11 @@ export default class MenuBar extends Component {
       <View style={styles.menuBar}>
         <View style={styles.menuItem}>
           <View style={styles.menuIcon}>
-            <View style={{justifyContent:'center'}}>
+            <View style={{ justifyContent: 'center' }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/hammer.png')} 
-                style={{width:22,height:20}}
+                source={require('GCCVendorMobile/images/hammer.png')}
+                style={{ width: 22, height: 20 }}
               />
             </View>
           </View>
@@ -28,11 +28,11 @@ export default class MenuBar extends Component {
         </View>
         <View style={styles.menuItem}>
           <View style={styles.menuIcon}>
-            <View style={{justifyContent:'center'}}>
+            <View style={{ justifyContent: 'center' }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/info.png')} 
-                style={{width:22,height:22}}
+                source={require('GCCVendorMobile/images/info.png')}
+                style={{ width: 22, height: 22 }}
               />
             </View>
           </View>
@@ -40,11 +40,11 @@ export default class MenuBar extends Component {
         </View>
         <View style={styles.menuItem}>
           <View style={styles.menuIcon}>
-            <View style={{justifyContent:'center'}}>
+            <View style={{ justifyContent: 'center' }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/mobile.png')} 
-                style={{width:14,height:22}}
+                source={require('GCCVendorMobile/images/mobile.png')}
+                style={{ width: 14, height: 22 }}
               />
             </View>
           </View>
@@ -52,11 +52,11 @@ export default class MenuBar extends Component {
         </View>
         <View style={styles.menuItem}>
           <View style={styles.menuIcon}>
-            <View style={{justifyContent:'center'}}>
+            <View style={{ justifyContent: 'center' }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/desktop.png')} 
-                style={{width:25,height:18}}
+                source={require('GCCVendorMobile/images/desktop.png')}
+                style={{ width: 25, height: 18 }}
               />
             </View>
           </View>
@@ -67,27 +67,26 @@ export default class MenuBar extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   menuBar: {
-    backgroundColor:'#111111',
-    flexDirection:'row',
+    backgroundColor: '#111111',
+    flexDirection: 'row',
     height: 60,
-    justifyContent:'center'
+    justifyContent: 'center'
   },
-  menuItem:{
-    width:75,
-    alignContent:'center'
+  menuItem: {
+    width: 75,
+    alignContent: 'center'
   },
-  menuIcon:{
-    height:42,
-    flexDirection:'row',
-    justifyContent:'center'
+  menuIcon: {
+    height: 42,
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
-  menuItemText:{
-    color:'#EEEEEE',
-    fontSize:11,
+  menuItemText: {
+    color: '#EEEEEE',
+    fontSize: 11,
     alignSelf: 'stretch',
-    textAlign: 'center',
-  },
+    textAlign: 'center'
+  }
 });
