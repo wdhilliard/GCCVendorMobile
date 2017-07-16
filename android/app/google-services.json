@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "117606118959",
+    "firebase_url": "https://gccvendormobile.firebaseio.com",
+    "project_id": "gccvendormobile",
+    "storage_bucket": "gccvendormobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117606118959:android:e3cf07e0e33b406c",
+        "android_client_info": {
+          "package_name": "com.gccvendormobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "117606118959-e8p5fkulg1p7i4s55cema2cqchte5gpu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgIL8JWXEO9qo8zyNGmztvCflrJRhPAn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

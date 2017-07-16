@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -10,17 +10,21 @@ import {
   Image,
   ListView,
   Navigator
-} from 'react-native';
-import JobScreen from 'GCCVendorMobile/components/jobScreen';
-import JobListScreen from 'GCCVendorMobile/components/jobListScreen';
-import { StackNavigator } from 'react-navigation';
+} from "react-native";
+import MeasureJobScreen from "GCCVendorMobile/components/measure/measureJobScreen";
+import JobsScreen from "GCCVendorMobile/components/jobs/jobsScreen";
+import WindowDetailsScreen from "GCCVendorMobile/components/window/windowDetailsScreen";
+import { StackNavigator } from "react-navigation";
+
+console.disableYellowBox = true;
 
 const App = StackNavigator({
-  Main: { screen: JobListScreen },
-  Job: { screen: JobScreen }
+  Main: { screen: JobsScreen },
+  Job: { screen: MeasureJobScreen },
+  WindowDetails: { screen: WindowDetailsScreen }
 });
 
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : 0;
 const MyStatusBar = ({ backgroundColor, ...props }) => (
   <View style={[styles.statusBar, { backgroundColor }]}>
     <StatusBar backgroundColor={backgroundColor} {...props} />
@@ -35,8 +39,8 @@ export default class GCCVendorMobile extends Component {
 
 const styles = StyleSheet.create({
   headerStyle: {
-    backgroundColor: '#AABBFF'
+    backgroundColor: "#AABBFF"
   }
 });
 
-AppRegistry.registerComponent('GCCVendorMobile', () => GCCVendorMobile);
+AppRegistry.registerComponent("GCCVendorMobile", () => GCCVendorMobile);

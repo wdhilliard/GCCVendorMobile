@@ -1,19 +1,43 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  TouchableHighlight
-} from 'react-native';
+import React, { Component } from "react";
+import { StyleSheet, View, Text, Image, TouchableHighlight } from "react-native";
 
 export default class JobListItem extends Component {
   constructor(props) {
     super(props);
     this.bind;
   }
-  goToJob(event) {
-    this.props.navigation.navigate('Job');
+  goToJob() {
+    this.props.navigation.navigate("Job", { jobKey: this.props.job._key });
+  }
+  renderJobType() {
+    let jobTypeLabel = this.props.job.serviceType[0].toUpperCase();
+    let labelStyle = {};
+    switch (this.props.job.serviceType.toLowerCase()) {
+      case "measure":
+        labelStyle = {
+          borderColor: "#4F08CA",
+          backgroundColor: "#4F08CA"
+        };
+        break;
+      case "install":
+        labelStyle = {
+          borderColor: "#00ad8f",
+          backgroundColor: "#00ad8f"
+        };
+        break;
+    }
+    if (this.props.job.isRework) {
+      jobTypeLabel = jobTypeLabel[0].toUpperCase() + " (R)";
+      labelStyle = {
+        borderColor: "#be122f",
+        backgroundColor: "#be122f"
+      };
+    }
+    return (
+      <View style={(styles.jobType, labelStyle)}>
+        <Text style={styles.jobTypeText}>{jobTypeLabel}</Text>
+      </View>
+    );
   }
   render() {
     return (
@@ -22,16 +46,14 @@ export default class JobListItem extends Component {
           <View style={styles.jobStar}>
             <Image
               resizeMode="contain"
-              source={require('GCCVendorMobile/images/star-outline.png')}
+              source={require("GCCVendorMobile/images/star-outline.png")}
               style={{ width: 24, height: 24 }}
             />
           </View>
 
           <View style={styles.jobDetails}>
             <View style={styles.jobInfo}>
-              <View style={styles.jobType}>
-                <Text style={styles.jobTypeText}>M</Text>
-              </View>
+              {this.renderJobType()}
               <View style={styles.jobNumber}>
                 <Text style={styles.jobNumberText}>
                   {this.props.job.jobNumber}
@@ -45,7 +67,7 @@ export default class JobListItem extends Component {
             <View style={styles.jobAddress}>
               <Text style={styles.jobCustomerName}>
                 {this.props.job.customer.firstName}
-                {' '}
+                {" "}
                 {this.props.job.customer.lastName}
               </Text>
               <Text style={styles.jobAddressLine}>
@@ -56,10 +78,10 @@ export default class JobListItem extends Component {
               </Text>
               <Text style={styles.jobAddressLine}>
                 {this.props.job.serviceAddress.city +
-                  ', ' +
-                  this.props.job.serviceAddress.city +
-                  ' ' +
-                  this.props.job.serviceAddress.state}
+                  ", " +
+                  this.props.job.serviceAddress.state +
+                  " " +
+                  this.props.job.serviceAddress.zipCode}
               </Text>
             </View>
 
@@ -68,7 +90,7 @@ export default class JobListItem extends Component {
           <View style={styles.jobArrowButton}>
             <Image
               resizeMode="contain"
-              source={require('GCCVendorMobile/images/right-arrow.png')}
+              source={require("GCCVendorMobile/images/right-arrow.png")}
               style={{ width: 9, height: 14 }}
             />
           </View>
@@ -80,14 +102,14 @@ export default class JobListItem extends Component {
 
 const styles = StyleSheet.create({
   job: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderBottomWidth: 1,
-    borderColor: '#EEEEEE',
-    flexDirection: 'row',
+    borderColor: "#EEEEEE",
+    flexDirection: "row",
     flexGrow: 1
   },
   jobStar: {
-    justifyContent: 'center',
+    justifyContent: "center",
     width: 45,
     padding: 11
   },
@@ -96,37 +118,38 @@ const styles = StyleSheet.create({
     flexGrow: 1
   },
   jobInfo: {
-    flexDirection: 'row'
+    flexDirection: "row"
   },
   jobType: {
     borderTopLeftRadius: 2,
     borderBottomLeftRadius: 2,
     borderWidth: 4,
     borderTopWidth: 0,
-    borderBottomWidth: 0,
-    borderColor: '#4F08CA',
-    backgroundColor: '#4F08CA'
+    borderBottomWidth: 0
   },
   jobTypeText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 14,
-    fontFamily: 'OpenSans-Semibold'
+    minWidth: 20,
+    textAlign: "center",
+    fontFamily: "OpenSans-Semibold",
+    paddingHorizontal: 3
   },
   jobNumber: {
-    backgroundColor: '#EEEEEE'
+    backgroundColor: "#EEEEEE"
   },
   jobNumberText: {
     paddingHorizontal: 4,
-    color: '#444444',
+    color: "#444444",
     fontSize: 14,
-    fontFamily: 'OpenSans-Semibold'
+    fontFamily: "OpenSans-Semibold"
   },
   jobDate: {},
   jobDateText: {
     paddingHorizontal: 5,
-    color: '#444444',
+    color: "#444444",
     fontSize: 14,
-    fontFamily: 'OpenSans-Semibold'
+    fontFamily: "OpenSans-Semibold"
   },
 
   jobAddress: {
@@ -134,17 +157,17 @@ const styles = StyleSheet.create({
     flexGrow: 20
   },
   jobCustomerName: {
-    color: '#444444',
+    color: "#444444",
     fontSize: 15,
-    fontFamily: 'OpenSans-Semibold'
+    fontFamily: "OpenSans-Semibold"
   },
   jobAddressLine: {
-    color: '#444444',
+    color: "#444444",
     fontSize: 14,
-    fontFamily: 'OpenSans-Light'
+    fontFamily: "OpenSans-Light"
   },
   jobArrowButton: {
-    justifyContent: 'center',
+    justifyContent: "center",
     width: 20
   }
 });

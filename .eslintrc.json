@@ -1,0 +1,39 @@
+{
+    "env": {
+        // "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true,
+            "jsx": true
+        },
+        "sourceType": "module"
+    },
+    "parser": "babel-eslint",
+    "plugins": [
+        "react",
+        "react-native"
+    ],
+    "rules": {
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "react/jsx-uses-react": "error",
+        "react/jsx-uses-vars": "error",
+        "react-native/no-unused-styles": 2,
+        "no-debugger":false
+        // "react-native/no-color-literals": 2
+        // "quotes": [
+        //     "error",
+        //     "single"
+        // ],
+        // "semi": [
+        //     "error",
+        //     "always"
+        // ]
+    }
+}

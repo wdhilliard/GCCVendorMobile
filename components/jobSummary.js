@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   ScrollView,
   Text,
   Image
-} from 'react-native';
+} from "react-native";
 
 export default class JobSummary extends Component {
   render() {
@@ -18,40 +18,40 @@ export default class JobSummary extends Component {
           <Text style={styles.jobTypeText}>MEASURE</Text>
         </View>
         <View style={{ flexGrow: 1 }} />
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flexDirection: "row" }}>
           <View style={styles.jobDetailBox}>
-            <View style={{ justifyContent: 'center', marginRight: 5 }}>
+            <View style={{ justifyContent: "center", marginRight: 5 }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/window.png')}
+                source={require("GCCVendorMobile/images/window.png")}
                 style={{ width: 12, height: 12 }}
               />
             </View>
-            <View style={{ justifyContent: 'center' }}>
+            <View style={{ justifyContent: "center" }}>
               <Text style={styles.jobDetailText}>1/1</Text>
             </View>
           </View>
           <View style={styles.jobDetailBox}>
-            <View style={{ justifyContent: 'center', marginRight: 5 }}>
+            <View style={{ justifyContent: "center", marginRight: 5 }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/ladder.png')}
+                source={require("GCCVendorMobile/images/ladder.png")}
                 style={{ width: 8, height: 12 }}
               />
             </View>
-            <View style={{ justifyContent: 'center' }}>
+            <View style={{ justifyContent: "center" }}>
               <Text style={styles.jobDetailText}>Yes</Text>
             </View>
           </View>
           <View style={styles.jobDetailBox}>
-            <View style={{ justifyContent: 'center', marginRight: 5 }}>
+            <View style={{ justifyContent: "center", marginRight: 5 }}>
               <Image
                 resizeMode="contain"
-                source={require('GCCVendorMobile/images/arch.png')}
+                source={require("GCCVendorMobile/images/arch.png")}
                 style={{ width: 14, height: 11 }}
               />
             </View>
-            <View style={{ justifyContent: 'center' }}>
+            <View style={{ justifyContent: "center" }}>
               <Text style={styles.jobDetailText}>No</Text>
             </View>
           </View>
@@ -63,28 +63,30 @@ export default class JobSummary extends Component {
 
 const styles = StyleSheet.create({
   jobSummaryContainer: {
-    flexDirection: 'row',
-    backgroundColor: '#FFFFFF',
-    padding: 11
+    flexDirection: "row",
+    backgroundColor: "#FFFFFF",
+    padding: 11,
+    borderBottomWidth: 1,
+    borderColor: "#CCCCCC"
   },
   jobType: {
-    borderRadius: 2,
-    borderWidth: 2,
-    borderColor: '#4F08CA',
-    backgroundColor: '#4F08CA'
+    borderRadius: 1,
+    borderWidth: 1,
+    borderColor: "#4F08CA",
+    backgroundColor: "#4F08CA"
   },
   jobTypeText: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 14,
-    fontFamily: 'OpenSans-Semibold',
+    fontFamily: "OpenSans-Semibold",
     paddingHorizontal: 3
   },
   jobDetailBox: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginLeft: 20
   },
   jobDetailText: {
-    fontSize: 16,
-    color: '#111111'
+    fontSize: 15,
+    color: "#111111"
   }
 });

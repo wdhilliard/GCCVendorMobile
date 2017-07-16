@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -7,45 +7,40 @@ import {
   Platform,
   ScrollView,
   Text,
-  Image
-} from 'react-native';
-import JobsScreen from 'GccVendorMobile/components/jobsScreen';
+  Image,
+  ListView,
+  Navigator
+} from "react-native";
+import MeasureJobScreen from "GCCVendorMobile/components/measure/measureJobScreen";
+import JobsScreen from "GCCVendorMobile/components/jobs/jobsScreen";
+import WindowDetailsScreen from "GCCVendorMobile/components/window/windowDetailsScreen";
+import { StackNavigator } from "react-navigation";
 
+console.disableYellowBox = true;
 
+const App = StackNavigator({
+  Main: { screen: JobsScreen },
+  Job: { screen: MeasureJobScreen },
+  WindowDetails: { screen: WindowDetailsScreen }
+});
 
-
-import * as firebase from 'firebase';
-
-const firebaseConfig = {
-  apiKey: "AIzaSyAPnYIAeeG8DPhio_WIGp4KwrPchDOUJyA",
-  authDomain: "gccvendormobile.firebaseapp.com",
-  databaseURL: "https://gccvendormobile.firebaseio.com",
-  projectId: "gccvendormobile",
-  storageBucket: "gccvendormobile.appspot.com",
-  messagingSenderId: "117606118959"
-};
-const firebaseApp = firebase.initializeApp(firebaseConfig);
-
-
-
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
-const MyStatusBar = ({backgroundColor, ...props}) => (
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : 0;
+const MyStatusBar = ({ backgroundColor, ...props }) => (
   <View style={[styles.statusBar, { backgroundColor }]}>
     <StatusBar backgroundColor={backgroundColor} {...props} />
   </View>
 );
 
-
-export default class GccVendorMobile extends Component {
+export default class GCCVendorMobile extends Component {
   render() {
-    return (
-      <JobsScreen/>
-    );
+    return <App headerStyle={styles.headerStyle} headerTintColor="'#FFFFFF'" />;
   }
 }
 
+const styles = StyleSheet.create({
+  headerStyle: {
+    backgroundColor: "#AABBFF"
+  }
+});
 
-
-
-
-AppRegistry.registerComponent('GccVendorMobile', () => GccVendorMobile);
+AppRegistry.registerComponent("GCCVendorMobile", () => GCCVendorMobile);

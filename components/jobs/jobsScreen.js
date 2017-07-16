@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   AppRegistry,
   StyleSheet,
@@ -10,12 +10,12 @@ import {
   Image,
   ListView,
   Picker
-} from 'react-native';
+} from "react-native";
 
-import firebase from 'GCCVendorMobile/firebase';
-import JobListItem from 'GCCVendorMobile/components/jobListItem';
-import JobFilterBar from 'GCCVendorMobile/components/jobFilterBar';
-import MenuBar from 'GCCVendorMobile/components/menuBar';
+import firebase from "GCCVendorMobile/firebase";
+import JobListItem from "GCCVendorMobile/components/jobs/jobListItem";
+import JobFilterBar from "GCCVendorMobile/components/jobs/jobFilterBar";
+import MenuBar from "GCCVendorMobile/components/shared/menuBar";
 
 const styles = StyleSheet.create({
   container: {
@@ -27,28 +27,27 @@ const styles = StyleSheet.create({
   },
   listView: {},
   headerStyle: {
-    backgroundColor: '#111111'
+    backgroundColor: "#111111"
   },
   headerTitleStyle: {
-    color: '#FFFFFF'
+    color: "#FFFFFF"
   },
   headerBackTitleStyle: {
-    color: '#FFFFFF'
+    color: "#FFFFFF"
   },
   headerTintColor: {
-    tintColor: '#FFFFFF'
+    tintColor: "#FFFFFF"
   },
   jobList: {
     flexGrow: 1,
-    backgroundColor: '#EEEEEE'
+    backgroundColor: "#EEEEEE"
   }
 });
 
 export default class JobsScreen extends Component {
   static navigationOptions = {
-    title: 'Jobs',
+    title: "Jobs",
     headerStyle: styles.headerStyle,
-    headerBackTitle: 'fuck',
     headerTitleStyle: styles.headerTitleStyle,
     headerBackTitleStyle: styles.headerBackTitleStyle
   };
@@ -58,19 +57,21 @@ export default class JobsScreen extends Component {
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2
       }),
-      pickerValue: 'java'
+      pickerValue: "java"
     };
-    this.itemsRef = firebase.database().ref('jobs');
+    this.itemsRef = firebase.database().ref("jobs");
   }
 
   listenForItems(itemsRef) {
-    itemsRef.on('value', snap => {
+    itemsRef.on("value", snap => {
       // get children as an array
       var items = [];
       snap.forEach(child => {
         let val = child.val();
         items.push({
           jobNumber: val.po,
+          serviceType: val.serviceType,
+          isRework: val.isRework,
           serviceAddress: val.serviceAddress,
           customer: val.customer,
           _key: child.key
@@ -87,7 +88,7 @@ export default class JobsScreen extends Component {
     this.listenForItems(this.itemsRef);
   }
 
-  _renderItem(item) {
+  renderJobListItem(item) {
     return <JobListItem job={item} navigation={this.props.navigation} />;
   }
 
@@ -98,7 +99,7 @@ export default class JobsScreen extends Component {
         <ScrollView style={styles.jobList}>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={this._renderItem.bind(this)}
+            renderRow={this.renderJobListItem.bind(this)}
             enableEmptySections={true}
             style={styles.listview}
           />
@@ -109,4 +110,4 @@ export default class JobsScreen extends Component {
   }
 }
 
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : 0;
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : 0;
